@@ -11,7 +11,6 @@ import { CartDrawer } from './components/CartDrawer';
 import { VideoCampaignModal } from './components/VideoCampaignModal';
 import { C2PAMetadataModal } from './components/C2PAMetadataModal';
 import { CartItem, DessertItem, BoxCustomization } from './types';
-import { DESSERT_ITEMS } from './data/desserts';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>('inicio');
@@ -57,7 +56,7 @@ export default function App() {
           price: item.price,
           quantity: 1,
           imageUrl: item.imageUrl,
-          details: `${item.servings} · Entrega Express`
+          details: `${item.weightOrQuantity} · Entrega Express`
         }
       ];
     });
@@ -69,9 +68,9 @@ export default function App() {
       (sum, t) => sum + t.item.price * t.quantity,
       0
     );
-    const addonsSum = boxData.addons
-      .filter((a) => a.selected)
-      .reduce((sum, a) => sum + a.price, 0);
+    const addonsSum = boxData.extraToppings
+      .filter((t) => t.selected)
+      .reduce((sum, t) => sum + t.price, 0);
     const totalPrice = boxData.boxType.price + treatsSum + addonsSum;
 
     const newCartItem: CartItem = {
@@ -110,6 +109,16 @@ export default function App() {
 
   const handleClearCart = () => {
     setCartItems([]);
+  };
+
+  const handleOpenWhatsAppDirect = () => {
+    const phone = (import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\\D/g, '');
+    if (!phone) {
+      window.alert('El número de WhatsApp del negocio no está configurado. Define VITE_WHATSAPP_NUMBER en el entorno.');
+      return;
+    }
+    const message = encodeURIComponent('¡Hola DulceYa Express Medellín! Quiero conocer el catálogo y hacer un pedido.');
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
   const handleOpenVideoModal = (fileName: string) => {
@@ -167,6 +176,7 @@ export default function App() {
           onOpenBoxBuilder={() => handleNavigate('caja-sorpresa')}
           onOpenVideoModal={handleOpenVideoModal}
           onOpenC2PAModal={handleOpenC2PAModal}
+          onOpenWhatsAppDirect={handleOpenWhatsAppDirect}
         />
 
         {/* Dessert Catalog */}
