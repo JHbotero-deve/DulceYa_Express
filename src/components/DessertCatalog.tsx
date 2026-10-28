@@ -1,12 +1,39 @@
 import React, { useState } from 'react';
 import { DessertItem, CandyCategory, SpicyLevel } from '../types';
-import { DESSERT_ITEMS } from '../data/desserts';
+import { products } from '../data/products.js';
 import { Plus, Flame, Sparkles, MessageCircle, Info, X, Check } from 'lucide-react';
 
 interface DessertCatalogProps {
   onAddToCart: (item: DessertItem) => void;
   onDirectWhatsAppItem?: (item: DessertItem) => void;
 }
+
+const CATALOG_ITEMS: DessertItem[] = products.map((product) => {
+  const category: CandyCategory =
+    product.category === 'Snacks' ? 'botanas_picantes' :
+    product.category === 'Tamarindos' ? 'tamarindos' :
+    product.category === 'Dulces Picantes' ? 'enchilados' :
+    product.category === 'Banderillas' ? 'enchilados' :
+    'dulces_mexicanos';
+
+  return {
+    id: String(product.id),
+    name: product.name,
+    category,
+    description: `Producto de catálogo ${product.category.toLowerCase()} para tus antojos DulceYa Express.`,
+    longDescription: `${product.name}. Precio en pesos colombianos. Consulta disponibilidad antes de realizar el pedido.`,
+    price: product.price,
+    weightOrQuantity: product.category,
+    spicyLevel: product.category === 'Snacks' || product.category === 'Dulces Picantes' || product.category === 'Banderillas' ? 'medio' : 'sin_picante',
+    imageUrl: '/assets/campaigns/DulceYa Express.png',
+    popular: product.id <= 4,
+    isMexicanOriginal: true,
+    rating: 0,
+    reviewsCount: 0,
+    ingredients: [],
+    tags: [product.category, 'Precio actualizado']
+  };
+});
 
 const CATEGORIES: { id: 'todos' | CandyCategory; label: string }[] = [
   { id: 'todos', label: 'Todos los Antojos' },
@@ -27,7 +54,7 @@ export const DessertCatalog: React.FC<DessertCatalogProps> = ({
   const [activeItemDetails, setActiveItemDetails] = useState<DessertItem | null>(null);
 
   // Filter items
-  const filteredItems = DESSERT_ITEMS.filter((item) => {
+  const filteredItems = CATALOG_ITEMS.filter((item) => {
     const matchesCategory = selectedCategory === 'todos' || item.category === selectedCategory;
     const matchesSpicy = selectedSpicyLevel === 'todos' || item.spicyLevel === selectedSpicyLevel;
     return matchesCategory && matchesSpicy;
