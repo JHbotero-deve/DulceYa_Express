@@ -4,6 +4,9 @@ import confetti from 'canvas-confetti';
 import { CartItem } from '../types';
 import { MEDELLIN_NEIGHBORHOODS } from '../data/desserts';
 
+const WHATSAPP_NUMBER = (import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\D/g, '');
+const FALLBACK_IMAGE = '/assets/campaigns/DulceYa Express.png';
+
 interface CartDrawerProps {
   isOpen: boolean;
   onClose: () => void;
@@ -22,9 +25,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onClearCart
 }) => {
   const [selectedNeighborhood, setSelectedNeighborhood] = useState<string>(MEDELLIN_NEIGHBORHOODS[0]);
-  const [recipientName, setRecipientName] = useState<string>('Familia Botero');
-  const [deliveryAddress, setDeliveryAddress] = useState<string>('Calle 10 # 43D-20');
-  const [recipientPhone, setRecipientPhone] = useState<string>('300 123 4567');
+  const [recipientName, setRecipientName] = useState<string>('');
+  const [deliveryAddress, setDeliveryAddress] = useState<string>('');
+  const [recipientPhone, setRecipientPhone] = useState<string>('');
   const [isSurpriseDelivery, setIsSurpriseDelivery] = useState<boolean>(true);
   const [specialInstructions, setSpecialInstructions] = useState<string>('No llamar antes de timbrar, tocar campana');
   const [showWhatsAppPreview, setShowWhatsAppPreview] = useState<boolean>(false);
@@ -68,6 +71,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   };
 
   const handleCheckoutWhatsApp = () => {
+    if (!WHATSAPP_NUMBER) {
+      window.alert('El número de WhatsApp del negocio no está configurado. Define VITE_WHATSAPP_NUMBER en el entorno.');
+      return;
+    }
+    if (!deliveryAddress.trim() || !recipientName.trim() || recipientPhone.replace(/\D/g, '').length < 10) {
+      window.alert('Completa la dirección, el nombre del destinatario y un celular válido de 10 dígitos.');
+      return;
+    }
     confetti({
       particleCount: 120,
       spread: 90,
@@ -75,13 +86,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     });
 
     const rawMessage = generateWhatsAppMessage();
-    const waUrl = `https://wa.me/573001234567?text=${encodeURIComponent(rawMessage)}`;
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(rawMessage)}`;
     
-    // Open preview or real tab
+    // Open synchronously to avoid browser popup blockers.
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
     setShowWhatsAppPreview(true);
-    setTimeout(() => {
-      window.open(waUrl, '_blank');
-    }, 700);
   };
 
   return (
@@ -162,7 +171,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       className="w-16 h-16 rounded-xl object-cover shrink-0"
                       referrerPolicy="no-referrer"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/assets/campaigns/DulceYa Express.png';
+                        const image = e.currentTarget;
+                        image.onerror = null;
+                        image.src = FALLBACK_IMAGE;
                       }}
                     />
 
@@ -360,12 +371,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             {/* Message Body */}
             <div className="p-4 bg-[#0b141a] space-y-3 max-h-96 overflow-y-auto">
               <div className="p-3 bg-[#005c4b] rounded-2xl rounded-tr-none text-xs text-white leading-relaxed whitespace-pre-line shadow-xs font-mono">
-                {decodeURIComponent(generateWhatsAppMessage())}
+                {generateWhatsAppMessage()}
               </div>
 
               {/* Simulated Auto-Reply */}
               <div className="p-3 bg-[#202c33] rounded-2xl rounded-tl-none text-xs text-stone-200 leading-relaxed shadow-xs">
-                ¡Listo! 🎉 Tu pedido ha sido confirmado. En minutos nuestro motorizado estará en camino con la mochila climatizada. 🚀🏍️
+                Vista previa de demostración. Este mensaje no confirma el pedido; espera la respuesta real del negocio por WhatsApp.
               </div>
             </div>
 
@@ -373,7 +384,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             <div className="p-3 bg-[#202c33] flex items-center justify-between gap-2 border-t border-stone-800">
               <button
                 onClick={() => {
-                  window.open(`https://wa.me/573001234567?text=${encodeURIComponent(generateWhatsAppMessage())}`, '_blank');
+                  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(generateWhatsAppMessage())}`, '_blank');
                 }}
                 className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-1.5 cursor-pointer"
               >

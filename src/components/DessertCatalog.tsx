@@ -3,6 +3,9 @@ import { DessertItem, CandyCategory, SpicyLevel } from '../types';
 import { DESSERT_ITEMS } from '../data/desserts';
 import { Plus, Flame, Sparkles, MessageCircle, Info, X, Check } from 'lucide-react';
 
+const WHATSAPP_NUMBER = (import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\D/g, '');
+const FALLBACK_IMAGE = '/assets/campaigns/DulceYa Express.png';
+
 interface DessertCatalogProps {
   onAddToCart: (item: DessertItem) => void;
   onDirectWhatsAppItem?: (item: DessertItem) => void;
@@ -53,10 +56,14 @@ export const DessertCatalog: React.FC<DessertCatalogProps> = ({
       onDirectWhatsAppItem(item);
       return;
     }
+    if (!WHATSAPP_NUMBER) {
+      window.alert('El número de WhatsApp del negocio no está configurado. Define VITE_WHATSAPP_NUMBER en el entorno.');
+      return;
+    }
     const message = encodeURIComponent(
       `¡Hola DulceYa Express Medellín! 🤤 Quiero pedir por favor:\n\n• 1x ${item.name} ($${item.price.toLocaleString('es-CO')} COP)\n\n¿Me confirman tiempo de entrega en Medellín? 🚀`
     );
-    window.open(`https://wa.me/573001234567?text=${message}`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
   };
 
   return (
@@ -142,7 +149,9 @@ export const DessertCatalog: React.FC<DessertCatalogProps> = ({
                     referrerPolicy="no-referrer"
                     onError={(e) => {
                       // Fallback image if external image fails
-                      (e.target as HTMLImageElement).src = '/assets/campaigns/DulceYa Express.png';
+                      const image = e.currentTarget;
+                      image.onerror = null;
+                      image.src = FALLBACK_IMAGE;
                     }}
                   />
                   
@@ -272,7 +281,9 @@ export const DessertCatalog: React.FC<DessertCatalogProps> = ({
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/assets/campaigns/DulceYa Express.png';
+                  const image = e.currentTarget;
+                      image.onerror = null;
+                      image.src = FALLBACK_IMAGE;
                 }}
               />
               <button

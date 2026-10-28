@@ -11,7 +11,6 @@ import { CartDrawer } from './components/CartDrawer';
 import { VideoCampaignModal } from './components/VideoCampaignModal';
 import { C2PAMetadataModal } from './components/C2PAMetadataModal';
 import { CartItem, DessertItem, BoxCustomization } from './types';
-import { DESSERT_ITEMS } from './data/desserts';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>('inicio');
@@ -23,17 +22,7 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Cart state
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 'default-1',
-      type: 'dessert',
-      name: DESSERT_ITEMS[0].name,
-      price: DESSERT_ITEMS[0].price,
-      quantity: 1,
-      imageUrl: DESSERT_ITEMS[0].imageUrl,
-      details: '8 - 10 porciones · Horneado Express'
-    }
-  ]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
