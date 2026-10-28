@@ -1,0 +1,343 @@
+import { DessertItem, BoxPresentation } from '../types';
+
+export const DESSERT_ITEMS: DessertItem[] = [
+  {
+    id: 'vaso-loco-mango-chamoy',
+    name: 'Vaso Loco de Mango con Chamoy & Tajín',
+    category: 'vasos_locos',
+    description: 'Cubos de mango criollo fresco bañados en chamoy casero espeso, limón recién exprimido, Tajín y brocheta de gomitas enchiladas.',
+    longDescription: 'El rey del antojo en Medellín. Seleccionamos mangos frescos en su punto perfecto de acidez y dulzura, los cortamos en cubos generosos y los ahogamos en nuestra salsa de chamoy artesanal con limón de campo, escarchado con Tajín clásico y coronado con una brocheta de gomitas bañadas en chile.',
+    price: 18000,
+    weightOrQuantity: 'Vaso 16 oz colmado',
+    spicyLevel: 'medio',
+    imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 4.9,
+    reviewsCount: 284,
+    ingredients: ['Mango criollo fresco', 'Chamoy artesanal dulce-ácido', 'Chile Tajín clásico', 'Limón fresco', 'Gomitas enchiladas'],
+    tags: ['Bestseller', 'Chamoy Artesanal', 'Fruta Fresca', 'Medellín Favorito']
+  },
+  {
+    id: 'gomitas-enchiladas-artesanales',
+    name: 'Gomitas Enchiladas Artesanales Mix (250g)',
+    category: 'enchilados',
+    description: 'Surtido de ositos, aros de durazno y gusanitos cubiertos con pasta espesa de chamoy y polvo de chile Miguelito.',
+    longDescription: 'Nuestra receta secreta de chamoy artesanal cocinada a fuego lento con tamarindo y jamaica, impregnada en gomitas tiernas y selladas con una lluvia de chile dulce Miguelito. Textura masticable inigualable con explosión de sabor en cada mordisco.',
+    price: 16000,
+    weightOrQuantity: 'Pote 250 gramos',
+    spicyLevel: 'medio',
+    imageUrl: 'https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=800&q=80',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 5.0,
+    reviewsCount: 310,
+    ingredients: ['Gomitas frutales importadas', 'Chamoy espeso casero', 'Chile Miguelito', 'Tajín', 'Limón deshidratado'],
+    tags: ['Ultra Popular', 'Chamoy Casero', 'Gomitas']
+  },
+  {
+    id: 'takis-fuego-clasicos',
+    name: 'Takis Fuego Clásicos (Bolsa Grande 200g)',
+    category: 'botanas_picantes',
+    description: 'Tortillas de maíz enrolladas ultra crujientes con chile piquín, limón ácido y el nivel de fuego más icónico.',
+    longDescription: 'El snack crujiente mexicano que no puede faltar en ningún parche de Medellín. Rellena de condimento rojo fuego intenso que deja los dedos rojos y el paladar pidiendo más. Perfecto para acompañar con un vaso de chamoy o limón extra.',
+    price: 12000,
+    weightOrQuantity: 'Bolsa grande 200g',
+    spicyLevel: 'fuego',
+    imageUrl: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=800&q=80',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 4.9,
+    reviewsCount: 420,
+    ingredients: ['Harina de maíz nixtamalizado', 'Aceite vegetal', 'Sazonador chile picante y limón', 'Sal yodada'],
+    tags: ['Crujiente', 'Picante Extremo', 'Snack Top']
+  },
+  {
+    id: 'takis-blue-heat',
+    name: 'Takis Blue Heat Edición Azul (200g)',
+    category: 'botanas_picantes',
+    description: 'La botana azul más picante: fuego eléctrico con toque cítrico refrescante que tiñe y sorprende.',
+    longDescription: 'Directo de México. Si ya dominas los Takis Fuego normales, el Blue Heat eleva la temperatura con su condimento azul intenso que combina chile habanero y limón volcánico.',
+    price: 14000,
+    weightOrQuantity: 'Bolsa 200g importada',
+    spicyLevel: 'fuego_extremo',
+    imageUrl: 'https://images.unsplash.com/photo-1599490659213-e2b9527bd087?auto=format&fit=crop&w=800&q=80',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 4.8,
+    reviewsCount: 195,
+    ingredients: ['Maíz seleccionado', 'Chile habanero sazonado', 'Colorante azul brillante certificado', 'Ácido cítrico'],
+    tags: ['Edición Especial', 'Fuego Azul', 'Importado']
+  },
+  {
+    id: 'aros-manzana-tajin',
+    name: 'Aros de Manzana Verde con Chamoy & Tajín (200g)',
+    category: 'enchilados',
+    description: 'Gomitas circulares de manzana verde ácida cubiertas en costra de chile Tajín, chamoy líquido y azúcar morena.',
+    longDescription: 'Un balance adictivo entre la acidez crujiente de la manzana verde y el calor salado del chile Tajín. Cada aro viene generosamente impregnado para que sientas el contraste dulce-picante desde el primer instante.',
+    price: 15000,
+    weightOrQuantity: 'Empaque sellado 200g',
+    spicyLevel: 'suave',
+    imageUrl: 'https://images.unsplash.com/photo-1499195333224-3ce974eecb47?auto=format&fit=crop&w=800&q=80',
+    popular: false,
+    isMexicanOriginal: true,
+    rating: 4.8,
+    reviewsCount: 140,
+    ingredients: ['Aros de manzana verde', 'Chamoy artesanal', 'Chile Tajín con limón', 'Tamarindo suave'],
+    tags: ['Ácido & Dulce', 'Poco Picor']
+  },
+  {
+    id: 'skwinkles-salsagheti-sandia',
+    name: 'Skwinkles Salsagheti Sandía + Salsa Gusano',
+    category: 'tamarindos',
+    description: 'Tiras alargadas de caramelo suave sabor sandía con salsita picante de tamarindo para bañar.',
+    longDescription: 'El clásico indiscutible: abre las tiras de espagueti dulce de sandía, vierte la bolsita de salsa Gusano de tamarindo y chile por encima y devóralo. Es el favorito para picotear mientras estudias o trabajas.',
+    price: 8500,
+    weightOrQuantity: 'Paquete con sobre de salsa 24g',
+    spicyLevel: 'medio',
+    imageUrl: 'https://images.unsplash.com/photo-1575224300306-1b8da36134ec?auto=format&fit=crop&w=800&q=80',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 4.9,
+    reviewsCount: 230,
+    ingredients: ['Tiras sabor sandía', 'Salsa líquida de tamarindo y chile Gusano', 'Ácido cítrico'],
+    tags: ['Salsita Incluida', 'Mecato Favorito']
+  },
+  {
+    id: 'pelon-pelo-rico-tamarindo',
+    name: 'Pelón Pelo Rico Original Tamarindo (Pack x3)',
+    category: 'tamarindos',
+    description: 'El legendario envase de presión mexicano: pulpa suave de tamarindo natural salado y enchilado.',
+    longDescription: 'El dulce más divertido de México: presiona el tubo para que la pulpa de tamarindo salga por los orificios superiores como si fuera cabello. Sabor intenso a tamarindo real con sal y chile piquín.',
+    price: 11000,
+    weightOrQuantity: 'Pack de 3 unidades (30g c/u)',
+    spicyLevel: 'medio',
+    imageUrl: 'https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=800&q=80',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 4.9,
+    reviewsCount: 178,
+    ingredients: ['Pulpa natural de tamarindo', 'Chile molido', 'Sal de mar', 'Azúcar de caña'],
+    tags: ['Clásico Mexicano', 'Tamarindo 100%']
+  },
+  {
+    id: 'pulparindo-clasico-extra',
+    name: 'Pulparindo De La Rosa Clásico & Picante (Pack x5)',
+    category: 'tamarindos',
+    description: 'Barras masticables de pulpa de tamarindo natural sazonadas con sal y chile molido tradicional.',
+    longDescription: 'Elaborado por De La Rosa en Guadalajara con pulpa de tamarindo cosechada y procesada a fuego lento. Sabor agridulce, salado y picante de consistencia chiclosa tradicional.',
+    price: 9500,
+    weightOrQuantity: 'Pack x5 barritas envueltas',
+    spicyLevel: 'medio',
+    imageUrl: 'https://images.unsplash.com/photo-1581798459219-318e76aecc7b?auto=format&fit=crop&w=800&q=80',
+    popular: false,
+    isMexicanOriginal: true,
+    rating: 4.7,
+    reviewsCount: 165,
+    ingredients: ['Pulpa de tamarindo', 'Chile molido', 'Sal yodada', 'Glucosa'],
+    tags: ['De La Rosa', 'Tamarindo Puro']
+  },
+  {
+    id: 'paletas-vero-mango-elote',
+    name: 'Dúo Paletas Vero: Mango & Elote con Chile (Pack x4)',
+    category: 'dulces_mexicanos',
+    description: 'Caramelo macizo sabor mango y fresa con cobertura gruesa de chile en polvo que se deshace en la boca.',
+    longDescription: 'Las dos paletas mexicanas más pedidas en un solo pack: 2 paletas Vero Mango y 2 paletas Vero Elote. Primero saboreas la cobertura de chile ácido y luego llegas al corazón dulce del caramelo.',
+    price: 10000,
+    weightOrQuantity: 'Pack de 4 paletas',
+    spicyLevel: 'medio',
+    imageUrl: 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=800&q=80',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 4.8,
+    reviewsCount: 144,
+    ingredients: ['Caramelo macizo', 'Chile piquín espolvoreado', 'Ácido cítrico', 'Esencias frutales'],
+    tags: ['Vero Original', 'Doble Sabor']
+  },
+  {
+    id: 'duvalin-bisabor-pack',
+    name: 'Duvalín Bi-Sabor Avellana & Fresa / Vainilla (Pack x4)',
+    category: 'dulces_mexicanos',
+    description: 'Dulce cremoso para untar con su cucharita tradicional. El alivio dulce perfecto contra el picante.',
+    longDescription: '¡A que no puedes comer solo uno! El postre más nostálgico y delicioso de México. Viene con su miniespátula plástica para mezclar los compartimentos de crema de avellana, vainilla y fresa cremosa.',
+    price: 10000,
+    weightOrQuantity: 'Pack x4 vasitos con espátula',
+    spicyLevel: 'sin_picante',
+    imageUrl: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 4.9,
+    reviewsCount: 312,
+    ingredients: ['Crema vegetal de avellana', 'Leche descremada en polvo', 'Cacao', 'Vainilla natural'],
+    tags: ['Dulce Cremoso', 'Sin Picante', 'Para Desembalar']
+  },
+  {
+    id: 'trufas-chocolate-avellana-mani',
+    name: 'Bombones & Trufas de Chocolate Rellenas (Pack x6)',
+    category: 'dulces_mexicanos',
+    description: 'Bocados de chocolate semiamargo rellenos de crema de avellanas, arequipe y maní tostado crocante.',
+    longDescription: 'Para los que disfrutan la combinación dulce y crocante. Trufas bañadas en cobertura de chocolate al 60% con trozos de maní tostado y corazón fundente de arequipe y avellanas.',
+    price: 14000,
+    weightOrQuantity: 'Caja x6 trufas artesanales',
+    spicyLevel: 'sin_picante',
+    imageUrl: 'https://images.unsplash.com/photo-1549575785-f5b2ea4c94ea?auto=format&fit=crop&w=800&q=80',
+    popular: false,
+    isMexicanOriginal: false,
+    rating: 4.9,
+    reviewsCount: 96,
+    ingredients: ['Chocolate 60%', 'Maní tostado colombiano', 'Crema de avellana', 'Arequipe artesanal'],
+    tags: ['Chocolate Puro', 'Contraste Dulce']
+  },
+  {
+    id: 'rollito-chamoy-tajin',
+    name: 'Rollito Gigante de Chamoy & Pulpa con Tajín',
+    category: 'enchilados',
+    description: 'Cinta larga enrollada de pulpa de tamarindo y chamoy espolvoreada con Tajín y limón deshidratado.',
+    longDescription: 'Desenróllalo poco a poco o córtalo en rodajas para bañar con chamoy extra. Hecho artesanalmente para tener la mordida chiclosa y densa perfecta.',
+    price: 7500,
+    weightOrQuantity: 'Rollito individual 80g',
+    spicyLevel: 'medio',
+    imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80',
+    popular: false,
+    isMexicanOriginal: true,
+    rating: 4.7,
+    reviewsCount: 88,
+    ingredients: ['Pulpa de frutas', 'Chamoy concentrado', 'Chile Tajín', 'Sal de grano'],
+    tags: ['Para Llevar', 'Masticable']
+  },
+  {
+    id: 'combo-desembalaje-fuego',
+    name: 'Combo Desembalaje Fuego Medellín (Completo)',
+    category: 'combos_desembalaje',
+    description: '1 Takis Fuego 200g + 1 Vaso Loco de Mango con Chamoy + 1 Pote Gomitas Enchiladas + 2 Skwinkles + 2 Duvalines + 1 Paleta Vero Mango.',
+    longDescription: 'El combo estrella de la publicidad DulceYa Express. Diseñado para desembalar en minutos cuando el antojo no da tregua. Incluye los snacks más picantes balanceados con el frescor del mango y la cremosidad del Duvalín.',
+    price: 45000,
+    weightOrQuantity: 'Combo gigante para 2-3 personas',
+    spicyLevel: 'fuego',
+    imageUrl: '/assets/campaigns/DulceYa Express.png',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 5.0,
+    reviewsCount: 512,
+    ingredients: ['Takis Fuego', 'Vaso de mango fresco con chamoy', 'Gomitas enchiladas', 'Skwinkles', 'Duvalín', 'Paleta Vero'],
+    tags: ['COMBO DESTACADO', 'Mejor Precio', 'Desembalaje Express']
+  },
+  {
+    id: 'combo-la-chimba-amigos',
+    name: 'Combo "La Chimba" Picante & Dulce (Para el Parche)',
+    category: 'combos_desembalaje',
+    description: '2 Takis Fuego + 2 Vasos Locos de Fruta con Tajín + 1 Pote Gomitas Enchiladas 250g + 4 Duvalines + 3 Pelón Pelo Rico + Salsa Chamoy extra.',
+    longDescription: 'El combo oficial para parchar con amigos en Medellín. Cantidad suficiente para 4 o 5 personas. Incluye el tarro de chamoy artesanal extra de 60ml y limones frescos en cuñas.',
+    price: 52000,
+    weightOrQuantity: 'Combo para 4-5 personas',
+    spicyLevel: 'medio',
+    imageUrl: '/assets/campaigns/Un antojo entre amigos.png',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 4.9,
+    reviewsCount: 220,
+    ingredients: ['Takis Fuego x2', 'Vasos Locos x2', 'Gomitas Enchiladas', 'Duvalines x4', 'Pelón Pelo Rico x3', 'Pote Chamoy 60ml'],
+    tags: ['Para Amigos', 'Medellín Parche', 'Chamoy Extra']
+  },
+  {
+    id: 'caja-sorpresa-familiar-dulces',
+    name: 'Caja Sorpresa Familiar: Antojo & Alegría',
+    category: 'combos_desembalaje',
+    description: 'Caja roja de lujo con lazo satinado, tarjeta caligráfica, surtido de 12 mecatos mexicanos, trufas de chocolate y vaso loco.',
+    longDescription: 'La experiencia que viste en nuestra campaña "Una sorpresa para la familia". Entregada por repartidor en mano con campanilla en cualquier barrio de Medellín.',
+    price: 58000,
+    weightOrQuantity: 'Caja de lujo + 12 dulces + tarjeta',
+    spicyLevel: 'suave',
+    imageUrl: '/assets/campaigns/Una sorpresa para la familia.png',
+    popular: true,
+    isMexicanOriginal: true,
+    rating: 4.9,
+    reviewsCount: 180,
+    ingredients: ['Caja de lujo roja DulceYa', 'Surtido de dulces picantes y suaves', 'Trufas de chocolate', 'Dedicatoria impresa'],
+    tags: ['Caja Sorpresa', 'Regalo Familiar', 'Tarjeta Incluida']
+  }
+];
+
+export const BOX_PRESENTATIONS: BoxPresentation[] = [
+  {
+    id: 'caja-roja-express',
+    name: 'Caja Desembalaje Express Roja',
+    description: 'Inspirada en el maletín motorizado de DulceYa Express. Acabado brillante rojo y dorado con visor transparente.',
+    price: 8000,
+    color: '#DC2626',
+    accentColor: '#F59E0B',
+    imageUrl: '/assets/campaigns/DulceYa Express.png'
+  },
+  {
+    id: 'caja-fuego-extremo',
+    name: 'Caja Fuego Extremo (Negro & Neón)',
+    description: 'Para los amantes del picante pesado. Diseño oscuro con llamas de fuego y compartimentos térmicos.',
+    price: 9000,
+    color: '#1C1917',
+    accentColor: '#EF4444',
+    imageUrl: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'caja-amigos-parche',
+    name: 'Caja Compartir "La Chimba" Medellín',
+    description: 'Formato amplio tipo cofre para abrir en el centro de la mesa y picotear en parche.',
+    price: 7500,
+    color: '#EA580C',
+    accentColor: '#FDE047',
+    imageUrl: '/assets/campaigns/Un antojo entre amigos.png'
+  },
+  {
+    id: 'caja-regalo-sorpresa',
+    name: 'Caja Sorpresa Familiar con Lazo de Seda',
+    description: 'Empaque de lujo con cinta de raso roja y espacio para dedicatoria caligráfica para sorprender en casa.',
+    price: 10000,
+    color: '#991B1B',
+    accentColor: '#FEF08A',
+    imageUrl: '/assets/campaigns/Una sorpresa para la familia.png'
+  }
+];
+
+export const EXTRA_TOPPINGS = [
+  { id: 'chamoy-extra-pote', name: 'Pote de Chamoy Artesanal Casero (60ml)', price: 3500, icon: 'Droplets' },
+  { id: 'tajin-limon-polvo', name: 'Sobrecito Extra de Chile Tajín Clásico', price: 2000, icon: 'Sparkles' },
+  { id: 'miguelito-dulce-chile', name: 'Polvo Miguelito Dulce & Ácido', price: 2000, icon: 'Flame' },
+  { id: 'cuñas-limon-fresco', name: 'Limones Frescos Cortados en Cuñas', price: 1500, icon: 'Citrus' },
+  { id: 'salsa-habanero-extrema', name: 'Gotero Salsa Fuego Habanero Extremo', price: 3000, icon: 'Flame' },
+  { id: 'duvalin-adicional', name: 'Duvalín Extra de Avellana para calmar picor', price: 2500, icon: 'Heart' }
+];
+
+export const MEDELLIN_NEIGHBORHOODS = [
+  'El Poblado / Provenza',
+  'Laureles / Conquistadores',
+  'Envigado (Zona Urbana)',
+  'Belen / Rosales',
+  'Estadio / La 70',
+  'Ciudad del Río / Industriales',
+  'Sabaneta (Central)',
+  'Itagüí (Centro / Ditaires)',
+  'Robledo / Pilarica',
+  'Centro / La Candelaria'
+];
+
+export const PRESET_STICKERS = [
+  {
+    theme: 'antojo',
+    label: '🤤 ¡Antojado al 100%!',
+    text: 'Te desembalamos este antojo express para que el día sea más chimba. ¡A disfrutar!'
+  },
+  {
+    theme: 'fuego',
+    label: '🔥 Nivel Fuego Desbloqueado',
+    text: 'Solo para valientes que no le temen al picante mexicano ni al chamoy de verdad.'
+  },
+  {
+    theme: 'chimba',
+    label: '💛 Para la mejor persona de Medellín',
+    text: 'Un detallito dulce y picosito porque te lo mereces todo. ¡De parte de quien más te quiere!'
+  },
+  {
+    theme: 'cumple',
+    label: '🎉 ¡Feliz Cumpleaños Mecatero!',
+    text: '¡Que este año esté lleno de momentos picantes, dulces y memorables!'
+  }
+];

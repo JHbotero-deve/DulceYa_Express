@@ -1,0 +1,8 @@
+{
+  "name": "Remix DulceYa Express",
+  "description": "Fast and delightful dessert delivery service to surprise your family with sweet treats at home.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
