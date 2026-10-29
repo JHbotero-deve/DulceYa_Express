@@ -6,7 +6,7 @@ import { createIntegritySignature, normalizeCustomer, verifyWompiEvent } from ".
 test("calcula el total del servidor y el envío", () => {
  const order=calculateOrder([{type:"dessert",id:"takis-fuego-clasicos",quantity:4}]);
  assert.equal(order.subtotalCop,48000); assert.equal(order.deliveryFeeCop,5000); assert.equal(order.amountInCents,5300000);
- assert.equal(calculateOrder([{type:"dessert",id:"combo-desembalaje-fuego",quantity:1}]).deliveryFeeCop,0);
+ assert.equal(calculateOrder([{type:"dessert",id:"combo-la-chimba-amigos",quantity:1}]).deliveryFeeCop,0);
 });
 test("rechaza productos desconocidos y cantidades inválidas", () => {
  assert.throws(()=>calculateOrder([{type:"dessert",id:"inventado",quantity:1}]));
