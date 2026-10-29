@@ -11,6 +11,8 @@ import { CartDrawer } from './components/CartDrawer';
 import { VideoCampaignModal } from './components/VideoCampaignModal';
 import { C2PAMetadataModal } from './components/C2PAMetadataModal';
 import { CartItem, DessertItem, BoxCustomization } from './types';
+import { DESSERT_ITEMS } from './data/desserts';
+import { WompiReturnPage } from './components/WompiReturnPage';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>('inicio');
@@ -69,8 +71,8 @@ export default function App() {
       0
     );
     const addonsSum = boxData.extraToppings
-      .filter((t) => t.selected)
-      .reduce((sum, t) => sum + t.price, 0);
+      .filter((a) => a.selected)
+      .reduce((sum, a) => sum + a.price, 0);
     const totalPrice = boxData.boxType.price + treatsSum + addonsSum;
 
     const newCartItem: CartItem = {
@@ -148,6 +150,8 @@ export default function App() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  if (window.location.pathname === '/pagos/wompi/transacciones') return <WompiReturnPage />;
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-stone-900 selection:bg-rose-200 selection:text-rose-900">
