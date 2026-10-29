@@ -58,7 +58,7 @@ export default function App() {
           price: item.price,
           quantity: 1,
           imageUrl: item.imageUrl,
-          details: `${item.servings} · Entrega Express`
+          details: `${item.weightOrQuantity} · Entrega Express`
         }
       ];
     });
@@ -111,6 +111,16 @@ export default function App() {
 
   const handleClearCart = () => {
     setCartItems([]);
+  };
+
+  const handleOpenWhatsAppDirect = () => {
+    const phone = (import.meta.env.VITE_WHATSAPP_NUMBER ?? '').replace(/\\D/g, '');
+    if (!phone) {
+      window.alert('El número de WhatsApp del negocio no está configurado. Define VITE_WHATSAPP_NUMBER en el entorno.');
+      return;
+    }
+    const message = encodeURIComponent('¡Hola DulceYa Express Medellín! Quiero conocer el catálogo y hacer un pedido.');
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
   const handleOpenVideoModal = (fileName: string) => {
@@ -170,6 +180,7 @@ export default function App() {
           onOpenBoxBuilder={() => handleNavigate('caja-sorpresa')}
           onOpenVideoModal={handleOpenVideoModal}
           onOpenC2PAModal={handleOpenC2PAModal}
+          onOpenWhatsAppDirect={handleOpenWhatsAppDirect}
         />
 
         {/* Dessert Catalog */}
