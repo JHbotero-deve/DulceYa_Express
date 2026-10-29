@@ -70,7 +70,7 @@ export default function App() {
       (sum, t) => sum + t.item.price * t.quantity,
       0
     );
-    const addonsSum = boxData.addons
+    const addonsSum = boxData.extraToppings
       .filter((a) => a.selected)
       .reduce((sum, a) => sum + a.price, 0);
     const totalPrice = boxData.boxType.price + treatsSum + addonsSum;
