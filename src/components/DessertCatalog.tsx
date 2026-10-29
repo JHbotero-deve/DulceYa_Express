@@ -8,6 +8,19 @@ interface DessertCatalogProps {
   onDirectWhatsAppItem?: (item: DessertItem) => void;
 }
 
+const PRODUCT_IMAGES: Record<number, string> = {
+  1: 'https://dulcilandia.com.mx/cdn/shop/files/3B31C535-9102-464C-A420-FBC41080D7F5.jpg?v=1747501855&width=1946',
+  2: 'https://i5.walmartimages.com/asr/a9796721-ce3e-4147-b286-3ce01e1a63a6.5a3d39a24ac26a775cfe1f288333d628.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768',
+  5: 'https://i5-mx.walmartimages.com/mg/gm/3pp/asr/2e859b16-2d6c-44ac-a561-9cda9b93ce0f.fa5feff59855dd953ef2976ab537fe58.jpeg?odnBg=ffffff&odnHeight=2000&odnWidth=2000',
+  6: 'https://chedrauimx.vtexassets.com/arquivos/ids/63865465/7501030424536_00.jpg?v=639072322765070000',
+  4: 'https://superdulces.com/cdn/shop/files/1fafc435b1f121cc1dc77f6c3dcfe3ee.png?v=1745876723&width=1946',
+  8: 'https://www.mexicomiamor.de/cdn/shop/files/DeLaRosa_Pulparindots_Mango_30g_1080x1080px_her.png?crop=center&height=1200&v=1705225349&width=1200',
+  9: 'https://i5.walmartimages.com/asr/af9e7cba-f71b-46d9-b0fa-b1c2e56eaf8b.e036c39b7c5268d0e9d767b4e776c5db.jpeg',
+  10: 'https://www.casadulceusa.com/cdn/shop/files/FlechazosPeg_e15c1202-23d8-4bcb-90df-bba483141f83.png?v=1755711404',
+  11: 'https://i5.walmartimages.com/asr/1726661d-bfa4-4733-8253-3df53204bcb4.15bc4cb278646faf8bd61537ab8630e7.jpeg?odnBg=FFFFFF&odnHeight=612&odnWidth=612',
+  12: 'https://dulceriasdenny.com/uploads/products/7222-1.jpg'
+};
+
 const CATALOG_ITEMS: DessertItem[] = products.map((product) => {
   const category: CandyCategory =
     product.category === 'Snacks' ? 'botanas_picantes' :
@@ -25,7 +38,7 @@ const CATALOG_ITEMS: DessertItem[] = products.map((product) => {
     price: product.price,
     weightOrQuantity: product.category,
     spicyLevel: product.category === 'Snacks' || product.category === 'Dulces Picantes' || product.category === 'Banderillas' ? 'medio' : 'sin_picante',
-    imageUrl: '/assets/campaigns/DulceYa Express.png',
+    imageUrl: PRODUCT_IMAGES[product.id] ?? '/assets/campaigns/DulceYa Express.png',
     popular: product.id <= 4,
     isMexicanOriginal: true,
     rating: 0,
