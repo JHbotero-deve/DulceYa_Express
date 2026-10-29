@@ -3,6 +3,7 @@ import { X, Trash2, Plus, Minus, Clock, MapPin, Gift, MessageCircle, Send, Check
 import confetti from 'canvas-confetti';
 import { CartItem } from '../types';
 import { MEDELLIN_NEIGHBORHOODS } from '../data/desserts';
+import { WompiButton } from './WompiButton';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -317,6 +318,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </div>
             </div>
 
+            <WompiButton cartItems={cartItems} selectedNeighborhood={selectedNeighborhood} deliveryAddress={deliveryAddress} recipientName={recipientName} recipientPhone={recipientPhone} isSurpriseDelivery={isSurpriseDelivery} specialInstructions={specialInstructions} />
             {/* Primary Action Button: WhatsApp Order */}
             <button
               onClick={handleCheckoutWhatsApp}
